@@ -1,15 +1,21 @@
-import './Header.css'
-function Header()
-{
-return(
-    <div className="header">
+import "./Header.css";
+
+function Header() {
+  return (
+    <header className="header">
+      <div className="header-content">
+        <p className="header-label">TASK MANAGEMENT</p>
+
         <h1>
-              Good morning 👋
+          Turn plans into <span>progress.</span>
         </h1>
-        <p>
-         Manage your tasks and stay productive.
+
+        <p className="header-description">
+          Stay organized, focus on what matters, and get things done.
         </p>
-    </div>
-)
+      </div>
+    </header>
+  );
 }
-export default Header
+
+export default Header;
