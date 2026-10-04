@@ -24,7 +24,7 @@ function Signup({ onSignup }) {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/signup",
+        "https://taskflow-uyil.onrender.com/api/signup",
         {
           method: "POST",
 

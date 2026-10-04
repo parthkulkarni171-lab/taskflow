@@ -31,7 +31,7 @@ function App() {
   const addTask = async (text, description) => {
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:5000/api/tasks", {
+    const response = await fetch("https://taskflow-uyil.onrender.com/api/tasks", {
       method: "POST",
 
       headers: {
@@ -65,7 +65,7 @@ function App() {
   const deleteTask = async (id) => {
     const token = localStorage.getItem("token");
 
-    const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+    const response = await fetch(`https://taskflow-uyil.onrender.com/api/tasks/${id}`, {
       method: "DELETE",
 
       headers: {
@@ -92,7 +92,7 @@ function App() {
   const completeTask = async (id, completed) => {
     const token = localStorage.getItem("token");
 
-    const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+    const response = await fetch(`https://taskflow-uyil.onrender.com/api/tasks/${id}`, {
       method: "PATCH",
 
       headers: {
@@ -135,7 +135,7 @@ function App() {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:5000/api/tasks/${editingTask.id}`,
+      `https://taskflow-uyil.onrender.com/api/tasks/${editingTask.id}`,
       {
         method: "PUT",
 
@@ -179,7 +179,7 @@ function App() {
     const token = localStorage.getItem("token");
 
     const getUser = async () => {
-      const response = await fetch("http://localhost:5000/api/me", {
+      const response = await fetch("https://taskflow-uyil.onrender.com/api/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -195,7 +195,7 @@ function App() {
     };
 
     const getTasks = async () => {
-      const response = await fetch("http://localhost:5000/api/tasks", {
+      const response = await fetch("https://taskflow-uyil.onrender.com/api/tasks", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
