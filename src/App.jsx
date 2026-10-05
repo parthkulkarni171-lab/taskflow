@@ -8,7 +8,7 @@ import Filter from "./Components/Filter";
 import TaskList from "./Components/TaskList";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import AdminDashboard from "../backend/AdminDashboard";
+import AdminDashboard from "./Components/AdminDashboard";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -246,10 +246,17 @@ function App() {
   // TASKFLOW UI
   // ====================
 
-  if (isAdmin) {
-  return <AdminDashboard />;
+if (isAdmin) {
+  return (
+    <AdminDashboard
+      onLogout={() => {
+        localStorage.removeItem("token");
+        setUser(null);
+        setIsLoggedIn(false);
+      }}
+    />
+  );
 }
-
   return (
     <>
       <Navbar
