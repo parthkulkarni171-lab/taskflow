@@ -1,0 +1,6 @@
+env of taskflow 
+VITE_SUPABASE_URL=https://qdiekjkteqwjwghxvjra.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_m1EcJdSGJ0l87MptybynHA_LAGWDoL0
+
+login jwt token 
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OThhYzA5Zi0yOTNhLTQ3YmMtYWYxYy05NmFlMmQwMjIwYWQiLCJpYXQiOjE3OTEwNDM1NjUsImV4cCI6MTc5MTY0ODM2NX0.YWlOVC_pt1OEKg3U2RP7JYrt1fzIQ7OVuVjON0Blwpw"

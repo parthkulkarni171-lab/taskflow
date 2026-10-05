@@ -8,11 +8,13 @@ import Filter from "./Components/Filter";
 import TaskList from "./Components/TaskList";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
+import AdminDashboard from "../backend/AdminDashboard";
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
   const [user, setUser] = useState(null);
+  const isAdmin =  user?.email === "parthkulkarni171@gmail.com";
   const [isSignup, setIsSignup] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
@@ -243,6 +245,10 @@ function App() {
   // ====================
   // TASKFLOW UI
   // ====================
+
+  if (isAdmin) {
+  return <AdminDashboard />;
+}
 
   return (
     <>

@@ -160,6 +160,65 @@ app.get("/api/me", authMiddleware, async (req, res) => {
     }
 });
 
+app.get("/api/admin/dashboard", authMiddleware, async (req, res) => {
+    try {
+        // Check if logged-in user is the admin
+        const userResult = await pool.query(
+            "SELECT email FROM users WHERE id = $1",
+            [req.userId]
+        );
+
+        if (userResult.rows.length === 0) {
+            return res.status(404).json({
+                message: "User not found"
+            });
+        }
+
+        const userEmail = userResult.rows[0].email;
+
+        if (userEmail !== process.env.ADMIN_EMAIL) {
+            return res.status(403).json({
+                message: "Access denied"
+            });
+        }
+
+        // Get all users
+        const usersResult = await pool.query(
+            `SELECT id, name, email, created_at
+             FROM users
+             ORDER BY created_at DESC`
+        );
+
+        // Get all tasks with their user's name/email
+        const tasksResult = await pool.query(
+            `SELECT
+                tasks.id,
+                tasks.title,
+                tasks.description,
+                tasks.completed,
+                tasks.created_at,
+                users.name,
+                users.email
+             FROM tasks
+             JOIN users
+             ON tasks.user_id = users.id
+             ORDER BY tasks.created_at DESC`
+        );
+
+        res.json({
+            users: usersResult.rows,
+            tasks: tasksResult.rows
+        });
+
+    } catch (error) {
+        console.error("Admin dashboard error:", error.message);
+
+        res.status(500).json({
+            message: "Failed to load admin dashboard"
+        });
+    }
+});
+
 // ==================================================
 // TASK ROUTES
 // ==================================================
